@@ -15,7 +15,6 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"net/url"
-	"os"
 	"reflect"
 	"regexp"
 	"strconv"
@@ -31,7 +30,7 @@ const alphanumLetters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012
 var app = New(
 	WithMaxBodySize(maxBodySize),
 	WithMaxDuration(maxDuration),
-	WithObserver(StdLogObserver(log.New(os.Stderr, "", 0))),
+	WithObserver(StdLogObserver(log.New(ioutil.Discard, "", 0))),
 )
 
 var handler = app.Handler()
